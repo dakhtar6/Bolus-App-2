@@ -8,7 +8,7 @@ var session = require('express-session');
 
 // Mongoose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/food-app');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/food-app');
 
 // Passport
 var passportConfig = require('./config/passport');
