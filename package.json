@@ -1,4 +1,9 @@
-{
+{   "name": "bolus-app",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
   "dependencies": {
     "express": "^4",
     "jade": "^1",
@@ -8,5 +13,6 @@
     "passport-local": "~1.0.0",
     "express-session": "~1.10.4",
     "bcrypt": "~0.8.1"
-  }
+    }
 }
+
