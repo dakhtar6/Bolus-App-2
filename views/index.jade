@@ -1,0 +1,116 @@
+extends layout
+
+block content
+	div.tab-content
+		
+		div(role="tabpanel").tab-pane.active#home
+
+		div(role="tabpanel").tab-pane#my-foods
+
+			form#new-food
+				h2 Add a food
+				.form-group
+					input#food-name.form-control(type="text", placeholder="Food Name...")
+				.form-group
+					input#serving-size.form-control(type="text", placeholder="Serving Size...")
+				.form-group
+					input#carbohydrate-count.form-control(type="number", step="any", placeholder="Grams of Carbohydrates...")
+				.form-group
+					input.btn.btn-primary(type="submit", value="Add Food")
+			
+			h2 Your Foods
+			ul#food-list
+				for food in foods
+					li.food(data-id="#{food._id}")
+						strong= food.name
+						| &nbsp;
+						a.add(href="#") transfer
+						|  - 
+						a.view(href="#") view
+						|  - 
+						a.edit(href="#") edit
+						|  - 
+						a.delete(href="#") delete
+
+
+			#add-modal.modal.fade
+				.modal-dialog
+					.modal-content
+						//- .modal-header
+						//- 	button.close(type="button", data-dismiss="modal")
+						//- 		span &times;
+						.modal-body
+							button.close(type="button", data-dismiss="modal")
+								span &times;
+							h5 Carbohydrate content added! 
+
+
+
+			#view-modal.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+								span &times;
+							h4.modal-title.food-name Food Name
+						.modal-body
+							h5.serving-size servingSize
+							h5.carbohydrate-count carbohydrates
+											
+							
+			#edit-modal.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+								span &times;
+							h4.modal-title Edit a Food
+						form#edit-form
+							input.food-id(type="hidden")
+							.modal-body
+								.form-group
+									input.food-name.form-control(type="text", placeholder="Food Name...")
+								.form-group
+									input.serving-size.form-control(type="text", placeholder="Serving Size...")
+								.form-group
+									input.carbohydrate-count.form-control(type="number", step="any", placeholder="Grams of Carbohydrates...")
+							
+							.modal-footer
+								input.btn.btn-primary(type="submit", value="Save Changes")
+
+
+
+
+		div(role="tabpanel").tab-pane#calculator
+
+			form#calculator-input
+					h2 Bolus Calculator 
+					.form-group
+						input#carb-intake.form-control(type="number", placeholder="Grams of Carbohydrates Ingested" name="Carbohydrate Intake")
+					.form-group
+						input#carb-to-insulin-ratio.form-control(type="number", placeholder="Carb to Insulin Ratio" name="Carb to Insulin Ratio")
+					.form-group
+						input#correction-factor.form-control(type="number", placeholder="Correction Factor / Insulin Sensitivity - mg/dl" name="Correction Factor / Insulin Sensitivity")
+					.form-group
+						input#current-bg.form-control(type="number", placeholder="Current Blood Glucose - mg/dl" name="Current Blood Glucose")
+					.form-group
+						input#desired-bg.form-control(type="number", placeholder="Desired Blood Glucose - mg/dl" name="Desired Blood Glucose")
+					.form-group
+						input.btn.btn-primary#bolusCalcButton(type="submit", value="Calculate")
+					br
+			h4 Total Bolus = 
+				span#bolusCalcResult
+
+			form#food-search-input
+				h3 Lookup a Food's Carb Value
+				.form-group
+					input#food-search.form-control(type="text", placeholder="Food Name...")
+				.form-group
+					input.btn.btn-primary(type="submit", value="Search")
+
+
+
+
+
+
+

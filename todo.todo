@@ -1,0 +1,43 @@
+
+
+
+add Bolus Calc
+
+integrate wolfram search api
+import wolfram carb search output
+
+create a database for familiar foods
+create carb import functionality for said database
+
+create tracker
+	- blood glucose
+	- insulin 
+	- carbs
+
+
+
+presentation format - 2 min
+------------------------------
+briefly explain type 1 diabetes
+	- insulin not produced, can't digest sugar
+	- more severe than type two diabetes
+	- must bolus for all meals
+	- explain bolus
+
+go over a bolus exercise with the class - 5 min
+-------------------------------------------------
+select a food as a group?
+
+not eating isn't an option
+
+explain the app functionality - 8 min
+--------------------------------------
+	- a calculator to do the math
+	- a food database to help you estimate carbohydrates
+	- a tracker to log your carbohydrate, bg and insulin counts
+
+explain the benefits of the app - 1 min
+------------------------------------------
+	- does the math for you
+	- helps estimate carbs when eating out or for unknown recipes
+	- can help grant some level of assurance to parents
