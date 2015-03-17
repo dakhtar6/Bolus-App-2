@@ -41,3 +41,18 @@ explain the benefits of the app - 1 min
 	- does the math for you
 	- helps estimate carbs when eating out or for unknown recipes
 	- can help grant some level of assurance to parents
+
+
+transfer
+-----------
+	select the carbohydrate key of that particular item in the database
+		- controller that will interact btw model and view
+		- get route and post route as well? 
+
+	prompt with are you sure? 
+		- jquery selector that will select the transfer button and tell it to produce a prompt
+		- the prompt, once confirmed, will result in the execution of a jquery selector selecting the carbohydrate key and inserting it as the value (.val()) of the carbohydrate form input
+			- subsequent transfers should add to the pre-existing value instead of replacing it
+		
+
+	upon confirmation, output the carbohydrate value into the calculator input

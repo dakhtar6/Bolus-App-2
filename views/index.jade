@@ -1,6 +1,8 @@
 extends layout
 
 block content
+	p Welcome, #{user.username}
+	p: a(href="/auth/logout") Logout
 	div.tab-content
 		
 		div(role="tabpanel").tab-pane.active#home
