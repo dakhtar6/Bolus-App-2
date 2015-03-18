@@ -1,5 +1,16 @@
 var Food = require('../models/food.js');
 
+var config;
+if(process.env.WOLFRAM_KEY){
+  config = {
+    wolframKey: process.env.WOLFRAM_KEY
+  };
+} else {
+  config = require('../config/api.js');
+}
+ 
+var wolfram = require('wolfram').createClient(config.wolframKey);
+
 var apiController = {
   addFood: function(req, res){
     // 1. Store a reference to the submitted data
@@ -52,6 +63,17 @@ var apiController = {
     Food.findByIdAndUpdate(foodId, req.body, function(err, result){
       res.send(result);
     });
+  },
+  
+  wolframTest: function(req, res){
+
+    console.log(req.body.foodsearch); 
+
+wolfram.query("carbohydrates in " + req.body.foodsearch, function(err, result) {
+  if(err) throw err;
+  console.log("Result: %j", result);
+  res.send(result);
+});
   }
 };
 

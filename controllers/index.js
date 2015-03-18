@@ -7,7 +7,8 @@ var indexController = {
 			// 2. Pass the resulting documents (foods)
 			// 		to the render function.
 			res.render('index', {
-				foods: foodsFromDB
+				foods: foodsFromDB,
+				// username: req.user.username
 			});
 		});
 	}

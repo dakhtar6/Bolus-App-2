@@ -1,11 +1,61 @@
 extends layout
 
 block content
-	p Welcome, #{user.username}
-	p: a(href="/auth/logout") Logout
+	div(role="tabpanel")
+		nav.navbar.navbar-default.navbar-static-top
+			ul.nav.nav-tabs(role="tablist")
+				li(role="presentation").active
+					a(href="#home", aria-controls="Home", role="tab", data-toggle="tab") Home 
+				li(role="presentation")
+					a(href="#calculator", aria-controls="Calculator", role="tab", data-toggle="tab") Calculator 
+				li(role="presentation")
+					a(href="#my-foods", aria-controls="My Foods", role="tab", data-toggle="tab") My Foods
+
 	div.tab-content
 		
 		div(role="tabpanel").tab-pane.active#home
+			div
+				img(src="http://www.mopcom.fr/wp-content/uploads/2015/02/Ahealthyfooditems.jpg")
+			h1 Accurately Calculate Your Insulin Dosage with MyBolus
+			h3 The fastest, easiest to use bolus calculator app
+			input.btn.btn-info.btn-lg(value="Sign up with Email")
+			//- a(href="/account/create" class="email-signup" tabindex="2") Sign up with Email
+			input.btn.btn-facebook.btn-lg(value="Sign up with Facebook")
+
+			h2 Join the thousands of people who use MyBolus's FREE calculator!
+			h3 Get free access to one of the largest food databases - over 5 million foods!
+
+			ul
+				li Medical studies show that keeping an accurate blood glucose count is critical for maintaining good health
+				li Quickly add and log recipes from across the web
+				li Carbohydrate search feature - Access nutritional values in mere seconds! 
+				li Easy and fast!
+				li Completely free, no strings attached!
+
+			h2 Accurately measure your insulin dosage and stay healthy!
+			p Maintaining a healthy blood glucose level is an important part of managing your diabetes. Gimicky machines and fad diets don't work, so we designed a free website and mobile apps that make calorie counting and food tracking easy. 
+			
+			h2 Features
+			ul 
+				li Bolus Calculator: An easy to use calculator that takes away all the hassle of pre-meal number crunching
+				li Carbohydrate Search: Tired of spending all that time reading nutritional labUse the powerful "wolframalpha" search functionality to query just how many carbs are in a particular food item. Search anything from pizza to snake stew!
+				li Custom Food Database Entry: Have a favorite meal of yours that is unique to you? You can easily log it into our food database! Whether its mom's apple pie or your "quiche on a leash" breakfast recipe, you can store and access it with ease! 
+
+			h2 My Bolus really works!
+			p MyBolus has been instrumental in helping me to manage my diabetes. Its easy to use and makes bolusing a breeze! I log onto my iPhone app every day and I'm proud to say I haven't missed a single day of logging in. Also, the community aspect on this site is amazing and I've made some really great friends throughout this journey!
+				p - David Hasselhoff
+
+			h2 Over 5 millions foods in our database!
+			p MyBolus has made a tremendous difference in my life! I love the vast database of food. The huge food database makes it almost impossible to NOT find a food that you're eating. The recipe counter makes it so much easier to track the nutrition in homemade meals as well. With MyBolus's help, I've been able to calculate bolus dosages in record time! 
+				p - The Monopoly Man
+
+			h2 It's easier than you think!
+			p "A patient of mine recommended MyBolus to me. I was concerned that is would be too time consuming and difficult to use...But it's easy! It's just a couple of clicks and you're done! If you're serious about fitness or weight loss or eating better, MyBolus is an excellent way to keep you in check and on track."
+				p - Dr. E. Ville
+
+			h2 Completely free - really!
+			p Frankly, I thought that MyBolus would not work. I figured it would start out free and once I was hooked, there would be a price involved...but that has not happened — free really means free. With a few clicks throughout the day, you are able to monitor your carbohydrate intake, set goals and ultimately, maintain your ideal blood glucose."
+				p - Dan Saul Knight
 
 		div(role="tabpanel").tab-pane#my-foods
 
@@ -19,6 +69,8 @@ block content
 					input#carbohydrate-count.form-control(type="number", step="any", placeholder="Grams of Carbohydrates...")
 				.form-group
 					input.btn.btn-primary(type="submit", value="Add Food")
+
+			hr
 			
 			h2 Your Foods
 			ul#food-list
@@ -44,7 +96,7 @@ block content
 						.modal-body
 							button.close(type="button", data-dismiss="modal")
 								span &times;
-							h5 Carbohydrate content added! 
+							//- h5 Carbohydrate content added! 
 
 
 
@@ -99,16 +151,18 @@ block content
 						input#desired-bg.form-control(type="number", placeholder="Desired Blood Glucose - mg/dl" name="Desired Blood Glucose")
 					.form-group
 						input.btn.btn-primary#bolusCalcButton(type="submit", value="Calculate")
-					br
-			h4 Total Bolus = 
-				span#bolusCalcResult
+					br 
+			span#bolusCalcResult
 
-			form#food-search-input
+			hr
+
+			form#food-search-input(action="/wolframTest", method="post")
 				h3 Lookup a Food's Carb Value
 				.form-group
-					input#food-search.form-control(type="text", placeholder="Food Name...")
+					input#food-search.form-control(type="text", placeholder="Food Name...", name="foodsearch")
 				.form-group
 					input.btn.btn-primary(type="submit", value="Search")
+			span#carbValue 
 
 
 

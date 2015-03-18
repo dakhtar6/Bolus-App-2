@@ -1,18 +1,6 @@
+1 - convert search code to ajax
+2 - display the total number of carbohydrates using jquery below the search field
 
-
-
-add Bolus Calc
-
-integrate wolfram search api
-import wolfram carb search output
-
-create a database for familiar foods
-create carb import functionality for said database
-
-create tracker
-	- blood glucose
-	- insulin 
-	- carbs
 
 
 

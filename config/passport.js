@@ -1,19 +1,20 @@
 var User = require('../models/user');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy; 
+var LocalStrategy = require('passport-local').Strategy;
+var userModel = require('../models/user.js');  
 // seed a user
-var user = new User({
-	username: 'Daneyal',
-	email: 'daneyalakhtar@gmail.com',
-	password: 'test'
-}); 
-user.save(function(err, user){
-	if(err){
-		console.log(err);
-	} else {
-		console.log('Seeded user');
-	}
-}); 
+// var user = new User({
+// 	username: 'Daneyal',
+// 	email: 'daneyalakhtar@gmail.com',
+// 	password: 'test'
+// }); 
+// user.save(function(err, user){
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log('Seeded user');
+// 	}
+// }); 
 
 //sesssions serialization
 passport.serializeUser(function(user, next){
@@ -21,25 +22,25 @@ passport.serializeUser(function(user, next){
 	next(null, user._id);
 });
 passport.deserializeUser(function(id, next){
-	User.findById(id, function(err, user){
+	userModel.findById(id, function(err, user){
 		next(err,user);
 	});
 }); 
 
 //ensure authentication method
-module.exports = {
-	ensureAuthenticated: function(req, res, next){
-		if(req.isAuthenticated()){
-			return next();
-		}
-		res.redirect('/auth/login');
-	}
-};
+// module.exports = {
+// 	ensureAuthenticated: function(req, res, next){
+// 		if(req.isAuthenticated()){
+// 			return next();
+// 		}
+// 		res.redirect('/auth/login');
+// 	}
+// };
 
 //Strategies
 var LocalStrategy = new LocalStrategy(
 	function(username, password, next){
-		User.findOne({username: username}, function(err, user){
+		userModel.findOne({username: username}, function(err, user){
 			if(err){
 				return next(err); 
 			}
@@ -48,7 +49,7 @@ var LocalStrategy = new LocalStrategy(
 			}
 
 			// given username matches a database document
-			user.comparePassword(password, function(err, isMatch){
+			userModel.comparePassword(password, function(err, isMatch){
 				if(err){
 					return next(err);
 				}

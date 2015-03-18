@@ -43,6 +43,23 @@ var onFoodSubmit = function(e){
   });
 };
 
+var onFoodSearch = function(e){
+  e.preventDefault();
+
+  var foodQuery = {
+    query: $('#food-search').val()
+  };
+
+  $.post('/api/wolframTest', foodQuery, function(dataFromServer){
+    var carbValue = dataFromServer[0];
+    console.log(carbValue);
+    //should I use .text() instead?
+    $("#carbValue").text("Total Carbohydrate Value = " + carbValue);
+  }); 
+
+};
+
+
 /**
 *Handle clicking "transfer" on any food in the list
 */
@@ -192,9 +209,11 @@ $(document).on('ready', function() {
      var bolusTotal = thisBolusCalc.calculate();
      console.log(bolusTotal);
 
-     $("#bolusCalcResult").text(bolusTotal + " units of insulin"); 
+     $("#bolusCalcResult").text("Total Bolus = " + bolusTotal + " units of insulin"); 
 
   });
+
+  this.reset();
 
 //   //APPENDS FOOD ITEMS AND CARB VALUES TO THE DOM//
 
