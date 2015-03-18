@@ -6,34 +6,36 @@
 
 presentation format - 2 min
 ------------------------------
+
+
+explain type I diabetes
+---------------------------
 briefly explain type 1 diabetes
 	- insulin not produced, can't digest sugar
 	- more severe than type two diabetes
 	- must bolus for all meals
 	- explain bolus
+do a sample demo without the aid of My Bolus
 
-go over a bolus exercise with the class - 5 min
--------------------------------------------------
-select a food as a group?
-
-not eating isn't an option
-
-explain the app functionality - 8 min
+explain the app features
 --------------------------------------
 	- a calculator to do the math
-	- a food database to help you estimate carbohydrates
-	- a tracker to log your carbohydrate, bg and insulin counts
+		- convenience of not doing math
+	- a food carb search feature to help you estimate carbohydrates
+		- helps to more accurately tabulate carbs
+	- a food database that you can add custom meals to
+	
 
-explain the benefits of the app - 1 min
+explain the benefits of the app 
 ------------------------------------------
 	- does the math for you
 	- helps estimate carbs when eating out or for unknown recipes
+	- saves time
 	- can help grant some level of assurance to parents
-
 
 transfer
 -----------
-	select the carbohydrate key of that particular item in the database
+	select the carbohydrate value of that particular item in the database
 		- controller that will interact btw model and view
 		- get route and post route as well? 
 

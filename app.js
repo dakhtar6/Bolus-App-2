@@ -68,10 +68,11 @@ app.post('/api/addFood', apiController.addFood);
 app.post('/api/deleteFood', apiController.deleteFood);
 app.get('/api/getFood/:food_id', apiController.getFood);
 app.post('/api/editFood/:food_id', apiController.editFood);
+app.post('/api/transferFood', apiController.transferFood); 
 
 //wolfram routes
 
-app.post('/wolframTest', apiController.wolframTest);
+app.post('/api/wolframTest', apiController.wolframTest);
 
 
 var server = app.listen(3775, function() {

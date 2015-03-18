@@ -64,15 +64,25 @@ var apiController = {
       res.send(result);
     });
   },
+
+  transferFood: function(req, res){
+
+  },
   
   wolframTest: function(req, res){
 
-    console.log(req.body.foodsearch); 
 
-wolfram.query("carbohydrates in " + req.body.foodsearch, function(err, result) {
+wolfram.query("carbohydrates" + req.body.query, function(err, result) {
   if(err) throw err;
+  console.log("error test", err); 
   console.log("Result: %j", result);
-  res.send(result);
+  // res.send(result);
+  result.map(function(element, index){
+    if (element.title === "Average nutrition facts") {
+      console.log("test", element.subpods[0].image); 
+      res.send(element.subpods[0].image);
+    }
+  }); 
 });
   }
 };

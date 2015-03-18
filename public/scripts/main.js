@@ -13,11 +13,11 @@ var onFoodSubmit = function(e){
   //  we are just directly storing the submitted
   //  object into the database with req.body
   //  on the server-side.
-  var newFoodData = {
-    name: $('#food-name').val(),
-    servingSize: $('#serving-size').val(),
-    carbohydrates: parseFloat($('#carbohydrate-count').val()),
-  };
+  // var newFoodData = {
+  //   name: $('#food-name').val(),
+  //   servingSize: $('#serving-size').val(),
+  //   carbohydrates: parseFloat($('#carbohydrate-count').val()),
+  // };
 
   // Reset the form easily
   this.reset();
@@ -51,14 +51,23 @@ var onFoodSearch = function(e){
   };
 
   $.post('/api/wolframTest', foodQuery, function(dataFromServer){
-    var carbValue = dataFromServer[0];
-    console.log(carbValue);
-    //should I use .text() instead?
-    $("#carbValue").text("Total Carbohydrate Value = " + carbValue);
+    
+    console.log(dataFromServer);
+    $("#carbValue").append("<img src='" + dataFromServer + "'>");
   }); 
 
 };
 
+// var primary = result.filter(function(i){
+//     return i.primary;
+//   });
+//   if(primary.length){
+//     var carbvalue = primary[0].subpods[0].value; 
+//     console.log(carbvalue);
+//   } else if (primary.length === 0) {
+//     return "No results for " + query + ". Please try another search term"; 
+//   }
+ 
 
 /**
 *Handle clicking "transfer" on any food in the list
@@ -66,6 +75,47 @@ var onFoodSearch = function(e){
 
 var foodTransfer = function(e){
   e.preventDefault();
+  $(this).parent().attr('data-id');
+    // newFoodData.carbohydrates;
+  var transferID = $(this).parent().attr('data-id');
+  console.log(transferID);
+  var that = $(this); 
+
+  $('#transfer-modal').modal('show');
+
+  $('#transfer-confirm').on('click', function(e){
+    e.preventDefault(); 
+    console.log('confirm is clicked'); 
+//clean up jquery
+  
+  
+
+  $.get('/api/getFood/' + transferID, function(dataFromServer){
+      console.log(dataFromServer); 
+      console.log(dataFromServer.carbohydrates); 
+      $('#carb-intake').val((dataFromServer.carbohydrates));
+      console.log($('#carb-intake').val());
+      $("#food-list").children("li").children('a.transfer').removeAttr("style");
+      that.css({color: "green"});
+  });
+
+  $('#transfer-modal').modal('hide');
+  
+  });
+
+  $('#transfer-cancel').on('click', function(e){
+    e.preventDefault(); 
+    $('#transfer-modal').modal('hide');
+  });
+
+  
+ 
+  // $.get('/api/getFood/' + transferID, function(dataFromServer){
+  //   console.log(dataFromServer); 
+  //   console.log(dataFromServer.carbohydrates); 
+  //   $('#carb-intake').val((dataFromServer.carbohydrates));
+  //   console.log($('#carb-intake').val());
+  // });
 
 };
 
@@ -151,8 +201,8 @@ $(document).on('ready', function(){
   // use AJAX to post the data
   $('#new-food').on('submit', onFoodSubmit);
 
-  //Handle transfer clicks
-  // $(document).on('click', '.transfer', foodAdd);
+  // Handle transfer clicks
+  $(document).on('click', '.transfer', foodTransfer);
 
   // Handle deletion clicks
   $(document).on('click', '.delete', foodDelete);
@@ -165,6 +215,9 @@ $(document).on('ready', function(){
 
   // Handle submitting the edit form
   $('#edit-form').on('submit', foodEditSubmit);
+
+  //Handle searching for carbohydrate content
+  $('#food-search-input').on('submit', onFoodSearch); 
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +249,8 @@ $(document).on('ready', function() {
 
   // Troubleshoot NAN - Prevent users from entering fictious inputs//
 
-  $("#bolusCalcButton").on("click", function() {
+  $("#bolusCalcButton").on("click", function(e) {
+    e.preventDefault();
       var helpme = $("[name='Carbohydrate Intake']").val();
      var carbohydrateIntake = (helpme === " ")? 0:  parseInt(helpme);
      var carbToInsulinRatio = parseInt($("[name='Carb to Insulin Ratio']").val()); 
@@ -206,14 +260,22 @@ $(document).on('ready', function() {
 
      var thisBolusCalc = new BolusCalc(carbohydrateIntake, carbToInsulinRatio, correctionFactorInsulinRatio, currentBloodGlucose, desiredBloodGlucose);
 
-     var bolusTotal = thisBolusCalc.calculate();
-     console.log(bolusTotal);
+    var bolusTotal = thisBolusCalc.calculate();
+    console.log(typeof bolusTotal);
+    bolusTotal = bolusTotal.toFixed(2); 
+    console.log(bolusTotal); 
+
+     // if (bolusTotal.length > 
 
      $("#bolusCalcResult").text("Total Bolus = " + bolusTotal + " units of insulin"); 
+      
+     $("#calculator-input")[0].reset();
+
 
   });
 
-  this.reset();
+
+  
 
 //   //APPENDS FOOD ITEMS AND CARB VALUES TO THE DOM//
 

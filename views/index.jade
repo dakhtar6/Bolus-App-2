@@ -26,7 +26,7 @@ block content
 			h3 Get free access to one of the largest food databases - over 5 million foods!
 
 			ul
-				li Medical studies show that keeping an accurate blood glucose count is critical for maintaining good health
+				li Medical studies show that keeping an accurate blood glucose count is critical for maintaining good diabetic health
 				li Quickly add and log recipes from across the web
 				li Carbohydrate search feature - Access nutritional values in mere seconds! 
 				li Easy and fast!
@@ -38,15 +38,18 @@ block content
 			h2 Features
 			ul 
 				li Bolus Calculator: An easy to use calculator that takes away all the hassle of pre-meal number crunching
-				li Carbohydrate Search: Tired of spending all that time reading nutritional labUse the powerful "wolframalpha" search functionality to query just how many carbs are in a particular food item. Search anything from pizza to snake stew!
-				li Custom Food Database Entry: Have a favorite meal of yours that is unique to you? You can easily log it into our food database! Whether its mom's apple pie or your "quiche on a leash" breakfast recipe, you can store and access it with ease! 
+				li Carbohydrate Search: Tired of spending all that time reading nutritional labels? Use the powerful "wolframalpha" search functionality to query just how many carbs are in a particular food item and get instant results! Search for anything from generic entries like "slice of pizza" to something as specific as "McDonald's Big Mac"!
+				li Custom Food Database Entry: Have a favorite meal of yours that is unique to you? You can easily log it into our food database! Whether its mom's apple pie or your "quiche on a leash" breakfast recipe, you can store and access its nutritional content with ease! 
 
-			h2 My Bolus really works!
-			p MyBolus has been instrumental in helping me to manage my diabetes. Its easy to use and makes bolusing a breeze! I log onto my iPhone app every day and I'm proud to say I haven't missed a single day of logging in. Also, the community aspect on this site is amazing and I've made some really great friends throughout this journey!
+			h2 My Bolus saves me time! 
+			p MyBolus has been instrumental in helping me to manage my diabetes. Its easy to use and makes bolusing a breeze! Gone are the times when I would have to spend 10-15 minutes looking at nutrition labels, guesstimating, and doing mind-numbing number cruching just to eat some grub. Now, I log onto MyBolus and I'm chowing down on my mama's pasta after only a minute. If only I could resurrect my career as easily as I now bolus...
 				p - David Hasselhoff
 
+			h2 My Bolus is the reason my marriage is still afloat!
+			p My Bolus has helped 
+
 			h2 Over 5 millions foods in our database!
-			p MyBolus has made a tremendous difference in my life! I love the vast database of food. The huge food database makes it almost impossible to NOT find a food that you're eating. The recipe counter makes it so much easier to track the nutrition in homemade meals as well. With MyBolus's help, I've been able to calculate bolus dosages in record time! 
+			p MyBolus has made a tremendous difference in my life! I love the vast database of food. The huge food database makes it almost impossible to NOT find a food that you're eating. That is great because I have a hard enough time finding things as it is! The recipe counter makes it so much easier to track the nutrition in homemade meals as well. With MyBolus's help, I've been able to calculate bolus dosages in record time! 
 				p - The Monopoly Man
 
 			h2 It's easier than you think!
@@ -78,7 +81,7 @@ block content
 					li.food(data-id="#{food._id}")
 						strong= food.name
 						| &nbsp;
-						a.add(href="#") transfer
+						a.transfer(href="#") transfer
 						|  - 
 						a.view(href="#") view
 						|  - 
@@ -100,6 +103,18 @@ block content
 
 
 
+			#transfer-modal.modal.fade
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+								span &times;
+						.modal-body
+							h5 Are you sure you wish to transfer carbohydrate content? 
+							a.btn.btn-primary#transfer-confirm OK
+							a.btn.btn-primary#transfer-cancel Cancel
+							//- Make sure to space the buttons apart
+
 			#view-modal.modal.fade
 				.modal-dialog
 					.modal-content
@@ -108,7 +123,7 @@ block content
 								span &times;
 							h4.modal-title.food-name Food Name
 						.modal-body
-							h5.serving-size servingSize
+							h5.serving-size servingSize 
 							h5.carbohydrate-count carbohydrates
 											
 							
@@ -162,7 +177,7 @@ block content
 					input#food-search.form-control(type="text", placeholder="Food Name...", name="foodsearch")
 				.form-group
 					input.btn.btn-primary(type="submit", value="Search")
-			span#carbValue 
+			div#carbValue 
 
 
 
