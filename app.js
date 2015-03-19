@@ -74,8 +74,8 @@ app.post('/api/transferFood', apiController.transferFood);
 
 app.post('/api/wolframTest', apiController.wolframTest);
 
-
-var server = app.listen(3775, function() {
+var port = process.env.PORT || 3775
+var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
 
