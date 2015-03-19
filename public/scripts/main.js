@@ -13,11 +13,11 @@ var onFoodSubmit = function(e){
   //  we are just directly storing the submitted
   //  object into the database with req.body
   //  on the server-side.
-  // var newFoodData = {
-  //   name: $('#food-name').val(),
-  //   servingSize: $('#serving-size').val(),
-  //   carbohydrates: parseFloat($('#carbohydrate-count').val()),
-  // };
+  var newFoodData = {
+    name: $('#food-name').val(),
+    servingSize: $('#serving-size').val(),
+    carbohydrates: parseFloat($('#carbohydrate-count').val()),
+  };
 
   // Reset the form easily
   this.reset();

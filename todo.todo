@@ -22,7 +22,7 @@ explain the app features
 	- a calculator to do the math
 		- convenience of not doing math
 	- a food carb search feature to help you estimate carbohydrates
-		- helps to more accurately tabulate carbs
+		- helps to more accurately tabulate carbs for unknown recipes
 	- a food database that you can add custom meals to
 	
 
@@ -30,8 +30,10 @@ explain the benefits of the app
 ------------------------------------------
 	- does the math for you
 	- helps estimate carbs when eating out or for unknown recipes
+	
 	- saves time
-	- can help grant some level of assurance to parents
+	- saves stress for larger groups, super convenient
+	- can help grant some level of assurance to parents by being an accurate calc
 
 transfer
 -----------

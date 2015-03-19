@@ -2,67 +2,113 @@ extends layout
 
 block content
 	div(role="tabpanel")
-		nav.navbar.navbar-default.navbar-static-top
-			ul.nav.nav-tabs(role="tablist")
-				li(role="presentation").active
-					a(href="#home", aria-controls="Home", role="tab", data-toggle="tab") Home 
-				li(role="presentation")
-					a(href="#calculator", aria-controls="Calculator", role="tab", data-toggle="tab") Calculator 
-				li(role="presentation")
-					a(href="#my-foods", aria-controls="My Foods", role="tab", data-toggle="tab") My Foods
+		nav.navbar.navbar-inverse.navbar-static-top
+			div.container-fluid
+				ul.nav.nav-pills(role="tablist")
+					li(role="presentation").active
+						a(href="#home", aria-controls="Home", role="tab", data-toggle="tab") Home 
+					li(role="presentation")
+						a(href="#calculator", aria-controls="Calculator", role="tab", data-toggle="tab") Calculator 
+					li(role="presentation")
+						a(href="#my-foods", aria-controls="My Foods", role="tab", data-toggle="tab") My Foods
+	div(role="tabpanel")
+		navbar.navbar-default.navbar-fixed-bottom
+			div.container-fluid
+				ul.nav.navbar-nav.navbar-right.nav-pills
+					li 
+						a Blog
+					li 
+						a Terms
+					li 
+						a Privacy
+					li 
+						a Contact Us
+					li 
+						a API
+					li 
+						a Jobs
+					li 
+						a Feedback
+
+
 
 	div.tab-content
 		
 		div(role="tabpanel").tab-pane.active#home
-			div
-				img(src="http://www.mopcom.fr/wp-content/uploads/2015/02/Ahealthyfooditems.jpg")
-			h1 Accurately Calculate Your Insulin Dosage with MyBolus
-			h3 The fastest, easiest to use bolus calculator app
-			input.btn.btn-info.btn-lg(value="Sign up with Email")
-			//- a(href="/account/create" class="email-signup" tabindex="2") Sign up with Email
-			input.btn.btn-facebook.btn-lg(value="Sign up with Facebook")
+			.row.padded
+				.col-md-6 
+					img.hero(src="/images/Ahealthyfooditems.png")
+				.col-md-6
+					h1.padded Accurately Calculate Your Insulin Dosage with MyBolus
+					h3 The fastest, easiest to use bolus calculator app
+					//- input.btn.btn-info.btn-lg(value="Sign up with Email")
+					//- //- a(href="/account/create" class="email-signup" tabindex="2") Sign up with Email
+					//- a.btn.btn-block.btn-social.btn-facebook
+					//- 	i.fa.fa-facebook Sign up with Facebook
+					
+					h2.italicize Join the thousands of people who use MyBolus's FREE calculator!
+					h3 Get free access to one of the largest food databases - over 5 million foods!
 
-			h2 Join the thousands of people who use MyBolus's FREE calculator!
-			h3 Get free access to one of the largest food databases - over 5 million foods!
+					ul.features
+						li Medical studies show that keeping an accurate blood glucose count is critical for maintaining good diabetic health
+						li Quickly add and log recipes from across the web
+						li Carbohydrate search feature - Access nutritional values in mere seconds! 
+						li Easy and fast!
+						li Completely free, no strings attached!
 
-			ul
-				li Medical studies show that keeping an accurate blood glucose count is critical for maintaining good diabetic health
-				li Quickly add and log recipes from across the web
-				li Carbohydrate search feature - Access nutritional values in mere seconds! 
-				li Easy and fast!
-				li Completely free, no strings attached!
-
-			h2 Accurately measure your insulin dosage and stay healthy!
-			p Maintaining a healthy blood glucose level is an important part of managing your diabetes. Gimicky machines and fad diets don't work, so we designed a free website and mobile apps that make calorie counting and food tracking easy. 
+			hr.padded-hr
+			.row.padded
+				.col-md-6 
+					h2 Accurately measure your insulin dosage and stay healthy!
+					h2 Features
+					ul.features 
+						li Bolus Calculator: An easy to use calculator that takes away all the hassle of pre-meal number crunching
+						li Carbohydrate Search: Tired of spending all that time reading nutritional labels? Use the powerful "wolframalpha" search functionality to query just how many carbs are in a particular food item and get instant results! Search for anything from generic entries like "slice of pizza" to something as specific as "McDonald's Big Mac"!
+						li Custom Food Database Entry: Have a favorite meal? You can log it into our food database! Whether its mom's apple pie or your "quiche on a leash" breakfast recipe, you can store and access its nutritional content with ease! 
+				.col-md-6
+					h3.centered-motivation-text "Maintaining a healthy blood glucose level is an important part of managing your diabetes. Gimicky machines and fad diets don't work, so we designed a free website and mobile apps that makes bolusing easy." 
 			
-			h2 Features
-			ul 
-				li Bolus Calculator: An easy to use calculator that takes away all the hassle of pre-meal number crunching
-				li Carbohydrate Search: Tired of spending all that time reading nutritional labels? Use the powerful "wolframalpha" search functionality to query just how many carbs are in a particular food item and get instant results! Search for anything from generic entries like "slice of pizza" to something as specific as "McDonald's Big Mac"!
-				li Custom Food Database Entry: Have a favorite meal of yours that is unique to you? You can easily log it into our food database! Whether its mom's apple pie or your "quiche on a leash" breakfast recipe, you can store and access its nutritional content with ease! 
+			hr.padded-hr
+			.row.padded
+				.col-sm-6.col-md-4
+					.thumbnail
+						img.resize-image(src='https://media.licdn.com/media/p/3/000/04c/0ae/3440e59.jpg')
+						|       
+						.caption
+						h3.caption-padding MyBolus Reassures Me! 
+						p.testimonial-text As the proud father of four children, two of whom have type I diabetes, meal time can be especially hectic. MyBolus makes our meals super-efficient by helping reduce the complexity of the calculation process. What I really like it about though, is that the app accurately calculates bolus dosages, meaning that I don't have to worry about my two little girls, Mindy and Mandy, making any errors and injecting the wrong amount of insulin. 
+						|         
+						h4.testimonial-name.italicize - Chris "Sensei" Rolfs
+							
+				
+				.col-sm-6.col-md-4
+					.thumbnail
+						img.resize-image(src='http://www.theprovince.com/cms/binary/7525845.jpg')
+						|       
+						.caption
+						h3.caption-padding MyBolus Has a Great Search and Saves Me Time Too!  
+						p.testimonial-text MyBolus has been instrumental in helping me to manage my diabetes. Its saved me so much time, I've actually been able to star in 36 B-list films just this year alone! Gone are the times when I would have to spend 10-15 minutes looking at nutrition labels, guesstimating, and doing mind-numbing number cruching just to eat some grub. Now, I log onto MyBolus and I'm chowing down on mama's pasta after just one minute. An added bonus is that I no longer have to do all those annoying calculations! Sigh...If only I could resurrect my career as easily...
+						p.testimonial-text "MyBolus has made a tremendous difference in my life! I love the food query ability since it makes it almost impossible to NOT find a food that you're eating. The recipe logger makes it so much easier to track the nutrition in homemade meals as well, and since I can stash those values in the app, I now have a handy little library of all my favorite recipes. 
+						|         
+						h4.testimonial-name.italicize - David "The Hoff" Hasselhoff
+							
 
-			h2 My Bolus saves me time! 
-			p MyBolus has been instrumental in helping me to manage my diabetes. Its easy to use and makes bolusing a breeze! Gone are the times when I would have to spend 10-15 minutes looking at nutrition labels, guesstimating, and doing mind-numbing number cruching just to eat some grub. Now, I log onto MyBolus and I'm chowing down on my mama's pasta after only a minute. If only I could resurrect my career as easily as I now bolus...
-				p - David Hasselhoff
+				.col-sm-6.col-md-4
+					.thumbnail
+						
+						img.resize-image(src='https://avatars0.githubusercontent.com/u/2018167?v=3&s=400')
+						|       
+						.caption
+						h3.caption-padding MyBolus Is Easy To Use! 
+						p.testimonial-text "A friend of mine recommended MyBolus to me. I was concerned that it would be too time consuming and difficult to use...But it's easy! It's just a couple of clicks and you're done! I mean, the code is so seriously well written and designed...I can only pray that I too will one day possess the sheer level of brilliance that whoever authored such code has resting inside his or her magnificient head. He or she should seriously be offered the nobel peace prize along with a high level coding job where he does nothing all day but occasionally supervise code lackeys and earn a "jillion" dollar salary along with excellent health benefits (acupuncture included), a generous 401k and stock options.  
+						|         
+						h4.testimonial-name.italicize - Michael "Code-Money" Herman
 
-			h2 My Bolus is the reason my marriage is still afloat!
-			p My Bolus has helped 
 
-			h2 Over 5 millions foods in our database!
-			p MyBolus has made a tremendous difference in my life! I love the vast database of food. The huge food database makes it almost impossible to NOT find a food that you're eating. That is great because I have a hard enough time finding things as it is! The recipe counter makes it so much easier to track the nutrition in homemade meals as well. With MyBolus's help, I've been able to calculate bolus dosages in record time! 
-				p - The Monopoly Man
-
-			h2 It's easier than you think!
-			p "A patient of mine recommended MyBolus to me. I was concerned that is would be too time consuming and difficult to use...But it's easy! It's just a couple of clicks and you're done! If you're serious about fitness or weight loss or eating better, MyBolus is an excellent way to keep you in check and on track."
-				p - Dr. E. Ville
-
-			h2 Completely free - really!
-			p Frankly, I thought that MyBolus would not work. I figured it would start out free and once I was hooked, there would be a price involved...but that has not happened — free really means free. With a few clicks throughout the day, you are able to monitor your carbohydrate intake, set goals and ultimately, maintain your ideal blood glucose."
-				p - Dan Saul Knight
 
 		div(role="tabpanel").tab-pane#my-foods
 
-			form#new-food
+			form.row.padded#new-food
 				h2 Add a food
 				.form-group
 					input#food-name.form-control(type="text", placeholder="Food Name...")
@@ -75,8 +121,8 @@ block content
 
 			hr
 			
-			h2 Your Foods
-			ul#food-list
+			h2.row.padded Your Foods
+			ul.row.padded#food-list
 				for food in foods
 					li.food(data-id="#{food._id}")
 						strong= food.name
@@ -112,6 +158,8 @@ block content
 						.modal-body
 							h5 Are you sure you wish to transfer carbohydrate content? 
 							a.btn.btn-primary#transfer-confirm OK
+							&nbsp;
+							&nbsp;
 							a.btn.btn-primary#transfer-cancel Cancel
 							//- Make sure to space the buttons apart
 
@@ -152,7 +200,7 @@ block content
 
 		div(role="tabpanel").tab-pane#calculator
 
-			form#calculator-input
+			form.row.padded#calculator-input
 					h2 Bolus Calculator 
 					.form-group
 						input#carb-intake.form-control(type="number", placeholder="Grams of Carbohydrates Ingested" name="Carbohydrate Intake")
@@ -167,17 +215,17 @@ block content
 					.form-group
 						input.btn.btn-primary#bolusCalcButton(type="submit", value="Calculate")
 					br 
-			span#bolusCalcResult
+			div.row.padded#bolusCalcResult
 
-			hr
+			hr.divider-border
 
-			form#food-search-input(action="/wolframTest", method="post")
+			form.row.padded#food-search-input(action="/wolframTest", method="post")
 				h3 Lookup a Food's Carb Value
 				.form-group
 					input#food-search.form-control(type="text", placeholder="Food Name...", name="foodsearch")
 				.form-group
 					input.btn.btn-primary(type="submit", value="Search")
-			div#carbValue 
+			div.row.padded#carbValue
 
 
 
